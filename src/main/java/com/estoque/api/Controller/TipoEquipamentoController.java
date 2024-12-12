@@ -1,6 +1,7 @@
 package com.estoque.api.Controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.estoque.api.Entity.StatusEquipamento;
 import com.estoque.api.Entity.TipoEquipamento;
 import com.estoque.api.Entity.DTOs.TipoEquipamentoDTO;
 import com.estoque.api.Entity.DTOs.TipoEquipamentoPageDTO;
@@ -59,6 +62,11 @@ public class TipoEquipamentoController {
         this.tipoEquipamentoService.deleteTipoEquipamento(id);
     }
 
+    @GetMapping("/list")
+    public ResponseEntity<List<TipoEquipamento>> getAllTipo() {
+        List<TipoEquipamento> tipoList = tipoEquipamentoService.getAllTipoEquipamento();
+        return ResponseEntity.ok(tipoList);
+    }
     
     @GetMapping
     public ResponseEntity<TipoEquipamentoPageDTO> listAllTipoEquipamento(

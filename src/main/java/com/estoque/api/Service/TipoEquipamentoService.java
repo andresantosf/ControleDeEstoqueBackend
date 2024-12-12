@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import com.estoque.api.Entity.StatusEquipamento;
 import com.estoque.api.Entity.TipoEquipamento;
 import com.estoque.api.Entity.DTOs.TipoEquipamentoDTO;
 import com.estoque.api.Entity.DTOs.TipoEquipamentoPageDTO;
@@ -28,12 +29,16 @@ public class TipoEquipamentoService {
 
         newTipoEquipamento.setNomeTipoEquipamento(data.nomeTipoEquipamento());
         newTipoEquipamento.setDescricaoTipoEquipamento(data.descricaoTipoEquipamento());
-        newTipoEquipamento.setDate(data.date());
+        newTipoEquipamento.setCreated_at(data.date());
 
         repository.save(newTipoEquipamento);
         return newTipoEquipamento;
     }
     
+    public List<TipoEquipamento> getAllTipoEquipamento() {
+        return this.repository.findAll();
+    }
+
     public TipoEquipamentoPageDTO getAllTipoEquipamento(int page, int size){
         PageRequest pageable = PageRequest.of(page, size);
         Page<TipoEquipamento> tipoEquipamentoPage = this.repository.findAll(pageable);
@@ -42,7 +47,7 @@ public class TipoEquipamentoService {
             tipoEquipamento.getId(), 
             tipoEquipamento.getNomeTipoEquipamento(), 
             tipoEquipamento.getDescricaoTipoEquipamento(), 
-            tipoEquipamento.getDate())).toList();
+            tipoEquipamento.getCreated_at())).toList();
             
         return new TipoEquipamentoPageDTO(listaTipoEquipamentos, tipoEquipamentoPage.getTotalElements(), tipoEquipamentoPage.getTotalPages());
     }

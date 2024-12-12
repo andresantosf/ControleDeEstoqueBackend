@@ -14,7 +14,7 @@ public class TipoEquipamentoMapper {
       return null;
     }
 
-    return new TipoEquipamentoDTO(tipoEquipamento.getId(), tipoEquipamento.getNomeTipoEquipamento(), tipoEquipamento.getDescricaoTipoEquipamento(), tipoEquipamento.getDate());
+    return new TipoEquipamentoDTO(tipoEquipamento.getId(), tipoEquipamento.getNomeTipoEquipamento(), tipoEquipamento.getDescricaoTipoEquipamento(), tipoEquipamento.getCreated_at());
   }
 
   public TipoEquipamento toEntity(TipoEquipamentoDTO tipoEquipamentoDTO) {

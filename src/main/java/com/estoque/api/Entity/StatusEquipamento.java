@@ -13,23 +13,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "tb_tipo_equipamento")
+@Table(name = "tb_status_equipamento")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
-public class TipoEquipamento {
+public class StatusEquipamento {
     @Id
     @GeneratedValue
-    @Column(name = "id_tipo_equipamento")
+    @Column(name = "id_status_equipamento")
     private UUID id;
 
-    @Column(name = "nome_tipo_equipamento")
-    private String nomeTipoEquipamento;
+    @Column(name = "nome_status_equipamento")
+    private String nomeStatusEquipamento;
 
-    @Column(name = "descricao_tipo_equipamento")
-    private String descricaoTipoEquipamento;
+    @Column(name = "descricao_status_equipamento")
+    private String descricaoStatusEquipamento;
     
     @Column(name = "created_at")
     private Date created_at;

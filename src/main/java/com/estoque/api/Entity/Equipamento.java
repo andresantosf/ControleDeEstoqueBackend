@@ -28,14 +28,20 @@ public class Equipamento {
     @Column(name = "id_equipamento")
     private UUID id;
 
-    @Column(name = "nome_equipamento")
+    @Column(name = "nome_do_equipamento")
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipo_eq")
+    @JoinColumn(name = "id_tipo_equipamento")
     private TipoEquipamento tipoEquipamento;
 
-    private String numeroDeSerie;
+    @ManyToOne
+    @JoinColumn(name = "id_status_atual_equipamento")
+    private StatusEquipamento statusAtualEquipamento;
+    
+    @Column(name = "numero_de_serie")
+    private Integer numeroDeSerie;
 
-    private Timestamp dataDeCadastro;
+    @Column(name = "created_at")
+    private Timestamp created_at;
 }
